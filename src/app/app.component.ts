@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
+export enum LanguageId {
+  fr = 'fr',
+  en = 'en',
+}
 
 @Component({
   selector: 'app-root',
@@ -6,5 +12,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'imdb';
+  
+  constructor(private translateService: TranslateService) {
+    this.translateService.setDefaultLang(LanguageId.en);
+  }
+
+  public switchLang(language: keyof typeof LanguageId): void {
+    this.translateService.use(language);
+  }
 }

@@ -1,9 +1,12 @@
 <div class="main-container">
 
-  <imdb-navbar></imdb-navbar>
+  <imdb-navbar (language)="switchLang($event)"></imdb-navbar>
 
   <section class="movies-container">
 
+    <movie-card></movie-card>
+    <movie-card></movie-card>
+    <movie-card></movie-card>
     <movie-card></movie-card>
 
   </section>

@@ -1,0 +1,19 @@
+.movie-card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border: 1px solid black;
+    width: 400px;
+    height: 120px;
+
+    .card-infos {
+        flex-grow: 1;
+    }
+
+    .card-logo {
+        img.card-logo-img {
+            height: 50px;
+        }
+    }
+}
+

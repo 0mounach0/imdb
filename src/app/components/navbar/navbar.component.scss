@@ -23,6 +23,11 @@
 
             img.lang-logo {
                 margin-right: 5px;
+                cursor: pointer;
+                opacity: .5;
+                &.active {
+                    opacity: 1;
+                }
             }                
         }
 
