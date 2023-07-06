@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Movie } from 'src/app/models/movie.model';
 
 @Component({
   selector: 'movie-card',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
+  @Input() item!: Movie;
+  @Output() $openEdit: EventEmitter<any>;
 
-  constructor() { }
+
+  constructor() { 
+    this.$openEdit = new EventEmitter();
+  }
 
   ngOnInit(): void {
   }

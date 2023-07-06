@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'imdb-pagination',
@@ -7,53 +6,54 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
-  currentPage = 1;
-  pageSize = 10;
-  totalPages!: number;
-  pageData!: any[];
 
-  constructor(private dataService: DataService) { }
-
-  jsonData!: any[];
-
-
-  ngOnInit(): void {
-    this.dataService.parseTSV().subscribe(
-      jsonData => {
-        this.jsonData = jsonData;
-        // Perform further processing or actions with the parsed JSON data
-        this.totalPages = Math.ceil(jsonData.length / this.pageSize);
-        this.getPageData(this.currentPage);
-      },
-      error => {
-        console.error('Error parsing TSV file:', error);
-      }
-    );
+  _currentPage: number = 1;
+  get currentPage(): number {
+      return this._currentPage;
+  }
+  @Input() set currentPage(value: number) {
+      this._currentPage = value;
   }
 
-  getPageData(pageNumber: number): void {
-    const startIndex = (pageNumber - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    this.pageData = this.jsonData.slice(startIndex, endIndex);
+  _pageSize: number = 10;
+  get pageSize(): number {
+      return this._pageSize;
+  }
+  @Input() set pageSize(value: number) {
+      this._pageSize = value;
+  }
+
+  _totalPages: number = 0;
+  get totalPages(): number {
+      return this._totalPages;
+  }
+  @Input() set totalPages(value: number) {
+      this._totalPages = value;
+  }
+
+  @Output() $navigateToPage: EventEmitter<number>;
+  @Output() $navigateToPreviousPage: EventEmitter<void>;
+  @Output() $navigateToNextPage: EventEmitter<void>;
+
+  constructor() {
+    this.$navigateToPage = new EventEmitter();
+    this.$navigateToPreviousPage = new EventEmitter();
+    this.$navigateToNextPage = new EventEmitter();
+   }
+
+  ngOnInit(): void {
   }
 
   navigateToPage(pageNumber: number): void {
-    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
-      this.currentPage = pageNumber;
-      this.getPageData(this.currentPage);
-    }
+    this.$navigateToPage.emit(pageNumber);
   }
 
   navigateToPreviousPage(): void {
-    if (this.currentPage > 1) {
-      this.navigateToPage(this.currentPage - 1);
-    }
+    this.$navigateToPreviousPage.emit();
   }
 
   navigateToNextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.navigateToPage(this.currentPage + 1);
-    }
+    this.$navigateToNextPage.emit();
   }
 
   getPaginationNumbers(): number[] {

@@ -9,6 +9,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { httpTranslateLoader } from './config/translate-loader.config';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditMovieModalComponent } from './components/edit-movie-modal/edit-movie-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,19 +19,21 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     NavbarComponent,
     MovieCardComponent,
     FooterComponent,
-    PaginationComponent
+    PaginationComponent,
+    EditMovieModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
           useFactory: httpTranslateLoader,
           deps: [HttpClient],
       },
-  })
+  }),
   ],
   providers: [],
   bootstrap: [AppComponent]

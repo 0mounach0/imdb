@@ -1,0 +1,32 @@
+<div class="modal" [ngClass]="{ 'is-open': isOpen }">
+  <div class="modal-content">
+    <h3>Editing</h3>
+    <div class="modal-content">
+      <div class="input-wrapper">
+        <label>
+          <input type="checkbox" [(ngModel)]="ckYes" (change)="selectOptionIsAdult(1)">
+          Yes
+        </label>
+        
+        <label>
+          <input type="checkbox" [(ngModel)]="ckNo" (change)="selectOptionIsAdult(0)">
+          No
+        </label>
+      </div>
+
+      <div class="input-wrapper">
+        <label>
+          <input type="number" [(ngModel)]="updatedMovie.runtimeMinutes">
+          Minutes
+        </label>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button class="close-button" (click)="closeModal()">&times;</button>
+
+      <button class="cancel-button" (click)="cancelChanges()">Cancel</button>
+      <button class="save-button" (click)="saveChanges()">Save</button>
+    </div>
+  </div>
+</div>

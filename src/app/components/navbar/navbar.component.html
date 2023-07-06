@@ -3,8 +3,9 @@
     <img class="imdb-logo" src="assets/icons/logo.svg" alt="imdb" />
     <div class="search-bar">
       <input type="text" placeholder="{{ 'navbar.input.placeholder' | translate }}" name="search-name"
-        id="search-input">
-      <img class="search-button" src="assets/icons/icon_magnify.svg" alt="search">
+        id="search-input" [(ngModel)]="searchQuery" (keyup.enter)="$searchQuery.emit(searchQuery)">
+      <img class="search-button" src="assets/icons/icon_magnify.svg" alt="search" 
+      (click)="$searchQuery.emit(searchQuery)">
     </div>
   </div>
   <div class="right-section">

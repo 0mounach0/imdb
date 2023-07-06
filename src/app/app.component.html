@@ -1,17 +1,27 @@
 <div class="main-container">
 
-  <imdb-navbar (language)="switchLang($event)"></imdb-navbar>
+  <imdb-navbar (language)="switchLang($event)"
+  ($searchQuery)="bindSearchQuery($event)"></imdb-navbar>
 
   <section class="movies-container">
-
-    <movie-card></movie-card>
-
-    <imdb-pagination></imdb-pagination>
-
+    <ng-container *ngIf="pageData">
+      <ng-container *ngFor="let item of pageData">
+        <movie-card [item]="item" ($openEdit)="editMovie($event)"></movie-card>
+      </ng-container>
+      <edit-movie-modal [isOpen]="showModal" [movie]="selectedMovie" (closed)="onModalClosed($event)">
+      </edit-movie-modal>
+    </ng-container>
   </section>
 
-
-
-  <imdb-footer></imdb-footer>
+  <footer>
+    <imdb-pagination 
+      [currentPage]="currentPage"
+      [pageSize]="pageSize"
+      [totalPages]="totalPages"
+      ($navigateToPage)="navigateToPage($event, filteredData)"
+      ($navigateToPreviousPage)="navigateToPreviousPage()"
+      ($navigateToNextPage)="navigateToNextPage()"
+    ></imdb-pagination>
+  </footer>
 
 </div>
