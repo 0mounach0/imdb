@@ -10,6 +10,7 @@ import { httpTranslateLoader } from './config/translate-loader.config';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { EditMovieModalComponent } from './components/edit-movie-modal/edit-movie-modal.component';
+import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { EditMovieModalComponent } from './components/edit-movie-modal/edit-movi
     NavbarComponent,
     MovieCardComponent,
     PaginationComponent,
-    EditMovieModalComponent
+    EditMovieModalComponent,
+    ScrollToTopComponent
   ],
   imports: [
     BrowserModule,
