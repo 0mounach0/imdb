@@ -1,6 +1,14 @@
-<div class="pagination">
-  <button (click)="navigateToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
-  <button *ngFor="let pageNumber of getPaginationNumbers()" (click)="navigateToPage(pageNumber)"
+<div class="pagination-container">
+  <button class="active" (click)="navigateToPreviousPage()" [class.disabled]="currentPage === 1"
+    [disabled]="currentPage === 1">
+    <</button> <button (click)="navigateToPage(1)" [class.active]="currentPage === 1">{{ 1 }}
+  </button>
+  <span class="more" *ngIf="currentPage >= 5">...</span>
+  <button *ngFor="let pageNumber of getPaginationNumbers()"
+    [class.disabled]="(pageNumber === totalPages) || pageNumber === 1" (click)="navigateToPage(pageNumber)"
     [class.active]="currentPage === pageNumber">{{ pageNumber }}</button>
-  <button (click)="navigateToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+  <span class="more" *ngIf="currentPage <= 496">...</span>
+  <button (click)="navigateToPage(totalPages)" [class.active]="currentPage === totalPages">{{ totalPages }}</button>
+  <button class="active" (click)="navigateToNextPage()" [class.disabled]="currentPage === totalPages"
+    [disabled]="currentPage === totalPages">></button>
 </div>
