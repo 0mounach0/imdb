@@ -11,6 +11,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { FormsModule } from '@angular/forms';
 import { EditMovieModalComponent } from './components/edit-movie-modal/edit-movie-modal.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
+import { MovieInfoComponent } from './components/movie-info/movie-info.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.c
     MovieCardComponent,
     PaginationComponent,
     EditMovieModalComponent,
-    ScrollToTopComponent
+    ScrollToTopComponent,
+    MovieInfoComponent
   ],
   imports: [
     BrowserModule,

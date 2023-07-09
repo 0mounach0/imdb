@@ -8,4 +8,5 @@ export interface Movie {
     endYear: string;
     runtimeMinutes: number;
     genres: string;
+    [key: string]: any; // Index signature for dynamic property access
 }

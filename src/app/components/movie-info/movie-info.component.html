@@ -1,0 +1,7 @@
+<div class="movie-info-container">
+    <div *ngFor="let prop of allowedProperties" class="movie-info">
+        <span class="info-property">{{prop | translate}}</span>
+        <span class="info-value">{{infoProperties[prop] === '\\N' ? '-': infoProperties[prop]}}</span>
+    </div>
+</div>
+    

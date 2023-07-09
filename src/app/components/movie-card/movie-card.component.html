@@ -3,8 +3,9 @@
         <div class="title-section">
             <div class="primaryTitle">{{item.primaryTitle}}</div>
             <div class="originalTitle">Original Title {{item.originalTitle}}</div>
-            <div class="originalTitle">isAdult {{item.isAdult}}</div>
-            <div class="originalTitle">Minutes {{item.runtimeMinutes}}</div>
+        </div>
+        <div class="info-list">
+            <movie-info-list [infoProperties]="item"></movie-info-list>
         </div>
         <img class="edit-movie-btn" (click)="$openEdit.emit(item)" src="assets/icons/icon_pencil.svg" alt="pencil logo" />
     </div>

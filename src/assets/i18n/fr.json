@@ -3,5 +3,11 @@
         "input": {
             "placeholder": "Rechercher un film..."
         }
-    }
+    },
+    "tconst": "ID",
+    "runtimeMinutes": "Durée",
+    "startYear": "Année de début",
+    "endYear": "Année de fin",
+    "isAdult": "Pour adultes",
+    "genres": "Genres"
 }
