@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   public selectedLang: keyof typeof LanguageId;
   public langs = Object.entries(LanguageId).map(([key, value]) => ({ key, value }));;
   public searchQuery = '';
+  public showSearchMobile: boolean = false;
 
   constructor(private translateService: TranslateService) {
     this.language = new EventEmitter();

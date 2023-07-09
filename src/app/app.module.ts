@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { EditMovieModalComponent } from './components/edit-movie-modal/edit-movie-modal.component';
 import { ScrollToTopComponent } from './components/scroll-to-top/scroll-to-top.component';
 import { MovieInfoComponent } from './components/movie-info/movie-info.component';
+import { DebouceKeyupDirective } from './directives/debouce-keyup.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MovieInfoComponent } from './components/movie-info/movie-info.component
     PaginationComponent,
     EditMovieModalComponent,
     ScrollToTopComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    DebouceKeyupDirective
   ],
   imports: [
     BrowserModule,
