@@ -1,0 +1,20 @@
+{
+    "navbar": {
+        "input": {
+            "placeholder": "Rechercher un film..."
+        }
+    },
+    "tconst": "ID",
+    "runtimeMinutes": "Durée",
+    "startYear": "Date début",
+    "endYear": "Date fin",
+    "isAdult": "Adultes",
+    "genres": "Genres",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "Ok",
+    "cancel": "Annuler",
+    "modal": {
+        "editing": "Modification"
+    }
+}
