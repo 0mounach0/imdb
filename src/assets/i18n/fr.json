@@ -6,8 +6,15 @@
     },
     "tconst": "ID",
     "runtimeMinutes": "Durée",
-    "startYear": "Année de début",
-    "endYear": "Année de fin",
-    "isAdult": "Pour adultes",
-    "genres": "Genres"
+    "startYear": "Date début",
+    "endYear": "Date fin",
+    "isAdult": "Adultes",
+    "genres": "Genres",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "Ok",
+    "cancel": "Annuler",
+    "modal": {
+        "editing": "Modification"
+    }
 }

@@ -1,32 +1,65 @@
 <div class="modal" [ngClass]="{ 'is-open': isOpen }">
   <div class="modal-content">
-    <h3>Editing</h3>
-    <div class="modal-content">
+    <h3 class="modal-title">{{'modal.editing' | translate}}</h3>
+    <div class="modal-body">
       <div class="input-wrapper">
-        <label>
-          <input type="checkbox" [(ngModel)]="ckYes" (change)="selectOptionIsAdult(1)">
-          Yes
-        </label>
-        
-        <label>
-          <input type="checkbox" [(ngModel)]="ckNo" (change)="selectOptionIsAdult(0)">
-          No
-        </label>
+        <label class="label-section" for="isAdult">{{'isAdult' | translate}}</label>
+        <div class="input-section">
+          <label>
+            <input name="isAdult" type="checkbox" [(ngModel)]="ckYes" (change)="selectOptionIsAdult(1)">
+            {{'yes' | translate}}
+          </label>
+          
+          <label>
+            <input type="checkbox" [(ngModel)]="ckNo" (change)="selectOptionIsAdult(0)">
+            {{'no' | translate}}
+          </label>
+        </div>
       </div>
 
       <div class="input-wrapper">
-        <label>
-          <input type="number" [(ngModel)]="updatedMovie.runtimeMinutes">
-          Minutes
-        </label>
+        <label class="label-section" for="runtimeMinutes">{{'runtimeMinutes' | translate}}</label>
+        <div class="input-section">
+            <input name="runtimeMinutes" type="number" [(ngModel)]="updatedMovie.runtimeMinutes">
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <label class="label-section" for="startYear">{{'startYear' | translate}}</label>
+        <div class="input-section">
+          <select name="startYear" id="startYearSelect" [(ngModel)]="updatedMovie.startYear">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <label class="label-section" for="endYear">{{'endYear' | translate}}</label>
+        <div class="input-section">
+          <select name="endYear" id="endYearSelect" [(ngModel)]="updatedMovie.endYear">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <label class="label-section" for="genres">{{'genres' | translate}}</label>
+        <div class="input-section">
+          <select name="genres" id="genresSelect" [(ngModel)]="updatedMovie.genres" (ngModelChange)="updateSelectedGenres()" multiple>
+            <option *ngFor="let genre of distinctGenres" [value]="genre">{{ genre }}</option>
+          </select>
+        </div>
       </div>
 
     </div>
     <div class="modal-footer">
-      <button class="close-button" (click)="closeModal()">&times;</button>
-
-      <button class="cancel-button" (click)="cancelChanges()">Cancel</button>
-      <button class="save-button" (click)="saveChanges()">Save</button>
+      <img 
+          class="close-button" (click)="closeModal()"
+          src="assets/icons/X_icon .svg" 
+          alt="close" 
+      />
+      <button class="save-button" (click)="saveChanges()">{{'ok' | translate}}</button>
+      <button class="cancel-button" (click)="cancelChanges()">{{'cancel' | translate}}</button>
     </div>
   </div>
 </div>

@@ -40,6 +40,10 @@
                 flex: 1;
                 border: none;
                 outline: none;
+
+                &::placeholder {
+                    font-style: italic;
+                }
             }
               
             .search-button {
@@ -68,8 +72,6 @@
 
 @media (max-width: 767px) {
     .navbar {
-        //padding: 0px;
-
         .right-section .search-button-mobile img {
             width: 25px;
             filter: invert(100%);
@@ -81,7 +83,6 @@
         }
 
         .search-bar-mobile {
-            //display: none;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -102,6 +103,10 @@
                 &:focus-visible {
                     outline: none;
                     box-shadow: none;
+                }
+
+                &::placeholder {
+                    font-style: italic;
                 }
             }
 

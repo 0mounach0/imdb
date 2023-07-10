@@ -10,22 +10,25 @@ export class EditMovieModalComponent implements OnInit, OnChanges {
 
   @Input() isOpen = false; 
   @Input() movie!: Movie;
+  @Input() distinctGenres!: string[];
   @Output() closed: EventEmitter<any> = new EventEmitter<any>(); // Output event to emit when the modal is closed
   public updatedMovie!: Movie;
   public ckYes!: boolean;
   public ckNo!: boolean;
-
-  selectOptionIsAdult(option: number) {
-    this.ckYes = option == 0 ? false: true;
-    this.ckNo = option == 0 ? true: false;
-    this.updatedMovie.isAdult = option;
+  public years: number[] = [];
+  
+  constructor() {
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= 1700; year--) {
+      this.years.push(year);
+    }
   }
-
-  ngOnInit(): void {
+  
+  public ngOnInit(): void {
       this.updatedMovie = { ...this.movie };
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes.movie) {
       const currentValue = changes.movie.currentValue;
       this.updatedMovie = { ...currentValue };
@@ -34,17 +37,34 @@ export class EditMovieModalComponent implements OnInit, OnChanges {
     }
   }
 
-  closeModal(): void {
+  public selectOptionIsAdult(option: number) {
+    this.ckYes = option == 0 ? false: true;
+    this.ckNo = option == 0 ? true: false;
+    this.updatedMovie.isAdult = option;
+  }
+
+  public updateSelectedGenres(): void {
+    try {
+      this.updatedMovie.genres = this.selectedGenresArray.join(', ');
+    } catch (error) {
+    }
+  }
+
+  get selectedGenresArray(): string[] {
+    return this.updatedMovie.genres.split(',').map(genre => genre.trim());
+  }
+
+  public closeModal(): void {
     this.isOpen = false;
     this.closed.emit();
   }
 
-  cancelChanges(): void {
+  public cancelChanges(): void {
     this.isOpen = false;
     this.closed.emit(null); // Emit null to indicate cancellation
   }
 
-  saveChanges(): void {
+  public saveChanges(): void {
     this.isOpen = false;
     this.closed.emit(this.updatedMovie); // Emit the updated movie data
   }

@@ -8,7 +8,7 @@
       <ng-container *ngFor="let item of pageData">
         <movie-card [item]="item" ($openEdit)="editMovie($event)"></movie-card>
       </ng-container>
-      <edit-movie-modal [isOpen]="showModal" [movie]="selectedMovie" (closed)="onModalClosed($event)">
+      <edit-movie-modal [distinctGenres]="distinctGenres" [isOpen]="showModal" [movie]="selectedMovie" (closed)="onModalClosed($event)">
       </edit-movie-modal>
     </ng-container>
   </section>
