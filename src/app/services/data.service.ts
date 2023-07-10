@@ -13,7 +13,7 @@ export class DataService {
   }
 
   public parseTSV(): Observable<any> {
-    let filePath: string = '/assets/data/data.tsv';
+    let filePath: string = 'assets/data/data.tsv';
     return new Observable(observer => {
       this.httpClient.get(filePath, { responseType: 'text' }).subscribe(fileContent => {
         this.papa.parse(fileContent, {
