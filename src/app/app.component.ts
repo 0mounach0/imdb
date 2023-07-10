@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DataService } from './services/data.service';
 import { Movie } from './models/movie.model';
+import { flatMap, split, uniq } from 'lodash';
 
 export enum LanguageId {
   fr = 'fr',
@@ -48,14 +49,10 @@ export class AppComponent implements OnInit {
   }
 
   private getDistinctGenres(): string[] {
-    const genresSet = new Set<string>();
-    this.jsonData?.forEach(movie => {
-      const genres = movie.genres?.split(',');
-      genres?.forEach(genre => {
-        genresSet.add(genre.trim());
-      });
-    });
-    return Array.from(genresSet);
+    const genres = flatMap(this.jsonData, 'genres');
+    const trimmedGenres = flatMap(genres, genre => split(genre, ','));
+    const uniqueGenres = uniq(trimmedGenres.map(genre => genre.trim()));
+    return uniqueGenres;
   }
 
   public editMovie(movie: Movie): void {
