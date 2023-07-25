@@ -72,6 +72,11 @@
 
 @media (max-width: 767px) {
     .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 96%;
+        z-index: 100;
         .right-section .search-button-mobile img {
             width: 25px;
             filter: invert(100%);
@@ -95,7 +100,8 @@
             
             input[type="text"] {
                 background: transparent;
-                padding: 20px 0px;
+                padding: 18px 0px;
+                margin: 2px 0px;
                 border: 0px;
                 width: 87%;
                 color: white;

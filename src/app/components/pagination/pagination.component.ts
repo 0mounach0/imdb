@@ -15,7 +15,7 @@ export class PaginationComponent implements OnInit {
       this._currentPage = value;
   }
 
-  _pageSize: number = 10;
+  _pageSize: number = 12;
   get pageSize(): number {
       return this._pageSize;
   }

@@ -11,7 +11,7 @@ button {
     color: #9B9B9B;
     cursor: pointer;
     font-family: inherit;
-    font-size: inherit;
+    font-size: 14px;
     line-height: inherit;
     padding: 0px 8px;
 
@@ -21,6 +21,7 @@ button {
 
     &.active {
         color: #000000;
+        font-weight: 600;
     }
 }
 

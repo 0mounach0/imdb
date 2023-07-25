@@ -16,7 +16,7 @@ export enum LanguageId {
 })
 export class AppComponent implements OnInit {
   public currentPage = 1;
-  public pageSize = 10;
+  public pageSize = 12;
   public totalPages!: number;
   public pageData!: Movie[];
   public jsonData!: Movie[];
